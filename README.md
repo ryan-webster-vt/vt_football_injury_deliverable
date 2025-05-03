@@ -1,4 +1,4 @@
-# VT Football Non-Contact Injury Probability Script
+# VT Football Non-Contact Injury Probability Script 🏈
 ## Summary
 Using the Catapult and Valid Performance datasets, two models were created using the Cox Proportional Hazards model, one for each dataset, to determine what variables contribute and prevent non-contact injuries and calculate probability of non-contact injury within a given number of days. This repository contains a script written in R that will ask the user whether to use the Catapult or Valid Performance. Then, the user can either manually input data for one athlete or load in data using a .csv file for multiple athletes. With this, the application will ask the user how many days forward would they like to calculate probability of injury. Now, the script will output these probabilities for each athlete. 
 ## Instructions
@@ -7,7 +7,7 @@ Using the Catapult and Valid Performance datasets, two models were created using
 ```bash
 git clone https://github.com/ryan-webster-vt/VT-Injury-Deliverable.git
 ```
-* There will be five files: user_file.R, catapult_backend.R, vald_backend.R, catapult_final_model.Rds, vald_final_model.Rds. Open user_file.R (the other two R files may remain closed). To run the script, press Ctrl+A+Enter, which will execute the entire code in that file. Insure that your console is open. You will be prompted whether to use the Catapult or Valid Performance model, choose by either typing c (for Catapult) or v (for Valid Performace).
+* There will be five files: user_file.R, catapult_backend.R, vald_backend.R, catapult_final_model.Rds, vald_final_model.Rds. Open user_file.R (the other two R files may remain closed). To run the script, press Ctrl+A+Enter, which will execute the entire code in that file. Insure that your console is open. You will be prompted whether to use the Catapult or Valid Performance model, choose by either typing c (for Catapult) or v (for Valid Performace). Libraries 'survival', 'tidyverse', and 'rstudioapi' will be installed on the user's machine if never downloaded.
 * Next, you'll be prompted to either manually insert data (type 'manual') for an individual player or load data for multiple athletes (type 'load'). If loading data, ensure that the data is in the same directory as the code and that the data is saved as a .csv file (not .xlsx or .xls). If the user has an Excel sheet not saved as a .csv, one can save the file as a .csv. Also, the model expects the variable headings to be equivalent to the ones used in the Catapult or Valid Performance datasets.
   
 Shown below is what the Catapult model expects if loading data (using random data):
@@ -22,3 +22,5 @@ And for the Valid Performance model:
 | Cam Phillips  | 500           | 500             |
 | Isaiah Ford  | 500           | 600             |
 
+* Once the data is inserted, the script will prompt the user to ask how many days forward to calculcate probability of injury based on model. Insert a number and it will output a list (or singular output for manual input) of athletes with their respective injury probability in descending order.
+* To rerun the script, simply press Ctrl+A+Enter in the user_file.
