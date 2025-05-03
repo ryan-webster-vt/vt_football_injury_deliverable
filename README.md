@@ -1,26 +1,45 @@
 # VT Football Non-Contact Injury Probability Script 🏈
+
 ## Summary
-Using the Catapult and Valid Performance datasets, two models were created using the Cox Proportional Hazards model, one for each dataset, to determine what variables contribute and prevent non-contact injuries and calculate probability of non-contact injury within a given number of days. This repository contains a script written in R that will ask the user whether to use the Catapult or Valid Performance. Then, the user can either manually input data for one athlete or load in data using a .csv file for multiple athletes. With this, the application will ask the user how many days forward would they like to calculate probability of injury. Now, the script will output these probabilities for each athlete. 
+
+Using the Catapult and Valid Performance datasets, two Cox Proportional Hazards models were created—one for each dataset—to determine which variables contribute to or help prevent non-contact injuries, and to calculate the probability of a non-contact injury occurring within a given number of days.
+
+This repository contains an R script that allows the user to choose either the Catapult or Valid Performance model. The user can then manually input data for a single athlete or load data from a `.csv` file for multiple athletes. After entering the number of days forward for the prediction, the script will output injury probabilities for each athlete.
+
 ## Instructions
-* To use the script, it is recommended that you install R and RStudio on your machine. R is the language used for this project and needed to run the code while RStudio is the IDE that allows you to execute R code. You can download both R and RStudio here: https://posit.co/download/rstudio-desktop/
-* Download the repository onto your machine. We recomend that you clone the repository using Git. You can also manually download each file, just insure that all the files are contained in the same directory when being used.
+
+* To use the script, it is recommended that you install R and RStudio on your machine. R is the language used for this project, and RStudio is the IDE that allows you to execute R code. You can download both here: [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
+
+* Download the repository onto your machine. We recommend cloning it using Git, but you may also manually download the files. Just ensure all files are located in the same directory when running the script.
+
 ```bash
 git clone https://github.com/ryan-webster-vt/VT-Injury-Deliverable.git
 ```
-* There will be five files: user_file.R, catapult_backend.R, vald_backend.R, catapult_final_model.Rds, vald_final_model.Rds. Open user_file.R (the other two R files may remain closed). To run the script, press Ctrl+A+Enter, which will execute the entire code in that file. Insure that your console is open. You will be prompted whether to use the Catapult or Valid Performance model, choose by either typing c (for Catapult) or v (for Valid Performace). Libraries 'survival', 'tidyverse', and 'rstudioapi' will be installed on the user's machine if never downloaded.
-* Next, you'll be prompted to either manually insert data (type 'manual') for an individual player or load data for multiple athletes (type 'load'). If loading data, ensure that the data is in the same directory as the code and that the data is saved as a .csv file (not .xlsx or .xls). If the user has an Excel sheet not saved as a .csv, one can save the file as a .csv. Also, the model expects the variable headings to be equivalent to the ones used in the Catapult or Valid Performance datasets.
-  
-Shown below is what the Catapult model expects if loading data (using random data):
-| About           | total_player_load | ima_decel_high | ima_cod_left_high | ima_cod_right_low | max_deceleration |
-|----------------|-------------------|----------------|-------------------|-------------------|------------------|
-| Michael Vick   | 250               | 2              | 3                 | 6                 | -0.5             |
-| Kam Chancellor | 300               | 4              | 5                 | 4                 | -0.3             |
 
-And for the Valid Performance model:
-| About     | Average.Force | Nordic.Left.Avg |
-|-----------|---------------|-----------------|
-| Cam Phillips  | 500           | 500             |
+* There are five files: `user_file.R`, `catapult_backend.R`, `vald_backend.R`, `catapult_final_model.Rds`, and `vald_final_model.Rds`. Open `user_file.R` (you do not need to open the other two `.R` files). To run the script, press `Ctrl + A` followed by `Enter` in RStudio. Make sure your console is open. You will be prompted to choose either the Catapult or Valid Performance model by typing `c` (for Catapult) or `v` (for Valid Performance). The required libraries—`survival`, `tidyverse`, and `rstudioapi`—will be installed automatically if not already present.
+
+* Next, you will be asked whether you want to manually input data (type `'manual'`) for a single athlete or load data from a `.csv` file (type `'load'`). If loading data, ensure that:
+
+  * The file is in the same directory as the script
+  * The file format is `.csv` (not `.xlsx` or `.xls`)
+  * The column headers match the expected format for either the Catapult or Valid Performance dataset
+
+## Example Input Formats
+
+**Catapult Model**
+
+| About          | total\_player\_load | ima\_decel\_high | ima\_cod\_left\_high | ima\_cod\_right\_low | max\_deceleration |
+| -------------- | ------------------- | ---------------- | -------------------- | -------------------- | ----------------- |
+| Michael Vick   | 250                 | 2                | 3                    | 6                    | -0.5              |
+| Kam Chancellor | 300                 | 4                | 5                    | 4                    | -0.3              |
+
+**Valid Performance Model**
+
+| About        | Average.Force | Nordic.Left.Avg |
+| ------------ | ------------- | --------------- |
+| Cam Phillips | 500           | 500             |
 | Isaiah Ford  | 500           | 600             |
 
-* Once the data is inserted, the script will prompt the user to ask how many days forward to calculcate probability of injury based on model. Insert a number and it will output a list (or singular output for manual input) of athletes with their respective injury probability in descending order.
-* To rerun the script, simply press Ctrl+A+Enter in the user_file.
+* Once the data is loaded, the script will prompt you to enter the number of days forward for the injury probability calculation. Enter a number (e.g., `30`), and the script will return a list (or single entry if manual) of athletes and their respective probabilities in descending order.
+
+* To re-run the script, simply press `Ctrl + A` and `Enter` again in `user_file.R`.
