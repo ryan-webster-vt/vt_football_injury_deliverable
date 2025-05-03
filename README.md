@@ -10,8 +10,9 @@ git clone https://github.com/ryan-webster-vt/VT-Injury-Deliverable.git
 * There will be five files: user_file.R, catapult_backend.R, vald_backend.R, catapult_final_model.Rds, vald_final_model.Rds. Open user_file.R (the other two R files may remain closed). To run the script, press Ctrl+A+Enter, which will execute the entire code in that file. Insure that your console is open. You will be prompted whether to use the Catapult or Valid Performance model, choose by either typing c (for Catapult) or v (for Valid Performace).
 * Next, you'll be prompted to either manually insert data (type 'manual') for an individual player or load data for multiple athletes (type 'load'). If loading data, ensure that the data is in the same directory as the code and that the data is saved as a .csv file (not .xlsx or .xls). If the user has an Excel sheet not saved as a .csv, one can save the file as a .csv. Also, the model expects the variable headings to be equivalent to the ones used in the Catapult or Valid Performance datasets.
 * Shown below is what the Catapult model expects if loading data:
-| About | total_player_load | ima_decel_high | ima_cod_left_high | ima_cod_right_low | max_deceleration |
-|----------|----------|----------|----------|----------|----------|
-| Michael Vick | 250 | 2 | 3 | 6 | -0.5 |
-| Kam Chancellor | 300 | 4 | 5 | 4 | -0.3 |
+| About           | total_player_load | ima_decel_high | ima_cod_left_high | ima_cod_right_low | max_deceleration |
+|----------------|-------------------|----------------|-------------------|-------------------|------------------|
+| Michael Vick   | 250               | 2              | 3                 | 6                 | -0.5             |
+| Kam Chancellor | 300               | 4              | 5                 | 4                 | -0.3             |
+
 
