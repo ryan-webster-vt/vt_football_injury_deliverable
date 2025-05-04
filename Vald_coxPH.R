@@ -122,7 +122,7 @@ vald_final <- vald_final %>%
 # Refit with transformed variables and clustering by athlete
 step_model_copy <- coxph(
   Surv(start, end, injury) ~
-    AverageForce_log + NordicLeftAvg_sqrt +
+    Average.Force + Nordic.Left.Avg +
     cluster(factor(About)),
   data = vald_final
 )
@@ -131,13 +131,13 @@ summary(step_model_copy)
 resid_mart <- residuals(step_model_copy, type = "martingale")
 md <- model.frame(step_model_copy)
 
-plot(md$AverageForce_log, resid_mart,
-     main="Martingale vs Avg Force (log)", xlab="AverageForce_log")
-lines(lowess(md$AverageForce_log, resid_mart), col="red")
+plot(md$Average.Force, resid_mart,
+     main="Martingale vs Avg Force", xlab="Average.Force")
+lines(lowess(md$Average.Force, resid_mart), col="red")
 
-plot(md$NordicLeftAvg_sqrt, resid_mart,
-     main="Martingale vs Nordic Left Avg (sqrt)", xlab="NordicLeftAvg_sqrt")
-lines(lowess(md$NordicLeftAvg_sqrt, resid_mart), col="red")
+plot(md$Nordic.Left.Avg, resid_mart,
+     main="Martingale vs Nordic Left Avg", xlab="Nordic.Left.Avg")
+lines(lowess(md$Nordic.Left.Avg, resid_mart), col="red")
 
 # Plot cumulative hazard
 fit <- survfit(step_model_copy)
@@ -145,8 +145,8 @@ plot(fit$cumhaz)
 
 # Survival curves for first 10 athletes
 player_fit <- data.frame(
-  AverageForce_log = vald_final$AverageForce_log[1:10],
-  NordicLeftAvg_sqrt = vald_final$NordicLeftAvg_sqrt[1:10]
+  Average.Force = vald_final$Average.Force[1:10],
+  Nordic.Left.Avg = vald_final$Nordic.Left.Avg[1:10]
 )
 survival <- survfit(step_model_copy, newdata = player_fit)
 plot(survival)
@@ -160,7 +160,7 @@ data_for_pred <- vald_final %>%
 
 playerfit2 <- coxph(
   Surv(start, end, injury) ~
-    AverageForce_log + NordicLeftAvg_sqrt +
+    Average.Force + Nordic.Left.Avg +
     cluster(factor(About)),
   data = vald_final
 )
@@ -179,4 +179,4 @@ risk_for_athlete <- data.frame(
 vif(step_model)
 
 # Save final model
-saveRDS(step_model_copy, "vald_model.RDS")
+saveRDS(step_model_copy, "vald_model_final.RDS")
