@@ -2,9 +2,9 @@
 
 ## Summary
 
-Using the Catapult and Valid Performance datasets, two Cox Proportional Hazards models were created—one for each dataset—to determine which variables contribute to or help prevent non-contact injuries, and to calculate the probability of a non-contact injury occurring within a given number of days.
+Using the Catapult and Vald Performance datasets, two Cox Proportional Hazards models were created—one for each dataset—to determine which variables contribute to or help prevent non-contact injuries, and to calculate the probability of a non-contact injury occurring within a given number of days.
 
-This repository contains an R script that allows the user to choose either the Catapult or Valid Performance model. The user can then manually input data for a single athlete or load data from a `.csv` file for multiple athletes. After entering the number of days forward for the prediction, the script will output injury probabilities for each athlete.
+This repository contains an R script that allows the user to choose either the Catapult or Vald Performance model. The user can then manually input data for a single athlete or load data from a `.csv` file for multiple athletes. After entering the number of days forward for the prediction, the script will output injury probabilities for each athlete.
 
 ## Instructions
 
@@ -16,7 +16,7 @@ This repository contains an R script that allows the user to choose either the C
 git clone https://github.com/ryan-webster-vt/VT-Injury-Deliverable.git
 ```
 
-* There are five files: `user_file.R`, `catapult_backend.R`, `vald_backend.R`, `catapult_final_model.Rds`, and `vald_final_model.Rds`. Open `user_file.R` (you do not need to open the other two `.R` files). To run the script, press `Ctrl + A` followed by `Enter` in RStudio. Make sure your console is open. You will be prompted to choose either the Catapult or Valid Performance model by typing `c` (for Catapult) or `v` (for Valid Performance). The required libraries—`survival`, `tidyverse`, and `rstudioapi`—will be installed automatically if not already present.
+* There are five files: `user_file.R`, `catapult_backend.R`, `vald_backend.R`, `catapult_final_model.Rds`, and `vald_final_model.Rds`. Open `user_file.R` (you do not need to open the other two `.R` files). To run the script, press `Ctrl + A` followed by `Enter` in RStudio. Make sure your console is open. You will be prompted to choose either the Catapult or Vald Performance model by typing `c` (for Catapult) or `v` (for Vald Performance). The required libraries—`survival`, `tidyverse`, and `rstudioapi`—will be installed automatically if not already present.
 
 * Next, you will be asked whether you want to manually input data (type `'manual'`) for a single athlete or load data from a `.csv` file (type `'load'`). If loading data, ensure that:
 
@@ -33,7 +33,7 @@ git clone https://github.com/ryan-webster-vt/VT-Injury-Deliverable.git
 | Michael Vick   | 250                 | 2                | 3                    | 6                    | -0.5              |
 | Kam Chancellor | 300                 | 4                | 5                    | 4                    | -0.3              |
 
-**Valid Performance Model**
+**Vald Performance Model**
 
 | About        | Average.Force | Nordic.Left.Avg |
 | ------------ | ------------- | --------------- |
